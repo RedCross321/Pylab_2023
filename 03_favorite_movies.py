@@ -17,6 +17,6 @@ my_favorite_movies = 'Стрингер, Американский психопа�
 
 # TODO здесь ваш код
 print(my_favorite_movies[:8])
-print(my_favorite_movies[57:])
+print(my_favorite_movies[-7:])
 print(my_favorite_movies[10:31])
 print(my_favorite_movies[50:55])
