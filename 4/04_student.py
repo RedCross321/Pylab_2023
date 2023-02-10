@@ -11,5 +11,9 @@
 #   Студенту надо попросить ХХХ.ХХ рублей
 
 educational_grant, expenses = 10000, 12000
-
+balance = 0
 # TODO здесь ваш код
+for _ in range(1, 11):
+    balance += expenses - educational_grant
+    expenses *= 1.03
+print(f'Студенту надо попросить {round(balance, 2)} рублей')
