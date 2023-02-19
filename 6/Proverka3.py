@@ -1,4 +1,3 @@
-from operator import sub, mul
 def make_anonymous_factorial():
     """Возвращает выражение, которое вычисляет факториал.
 
@@ -9,5 +8,7 @@ def make_anonymous_factorial():
     >>> check(LAB_SOURCE_FILE, 'make_anonymous_factorial', ['Assign', 'AugAssign', 'FunctionDef', 'Recursion'])
     True
     """
-    return lambda y: mul(y, sub(y, 1))
+    # return lambda x: x*make_anonymous_factorial()(x-1) if x>0 else 1
+    return (lambda f: lambda n: 1 if n == 0 else n * f(f)(n - 1))(lambda f: lambda n: 1 if n == 0 else n * f(f)(n - 1))
 print(make_anonymous_factorial()(5))
+

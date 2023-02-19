@@ -74,18 +74,18 @@ def pingpong(n):
     True
     """
     "*** YOUR CODE HERE ***"
-    # def eight(n):
-    #     while n > 0:
-    #         if n % 10 == 8:
-    #             return eight(n//10) + 1
-    #         else:
-    #             return eight(n//10)
-    #     return 0
-    # while n > 1:
-    #     if n % 8 == 0 or eight(n) > 0:
-    #         return (pingpong(n-1) + 1)*(-1)
-    #     return pingpong(n-1) + 1
-    # return 1
+    def eight(n):
+        while n > 0:
+            if n % 10 == 8:
+                return eight(n//10) + 1
+            else:
+                return eight(n//10)
+        return 0
+    while n > 1:
+        if n % 8 == 0 or eight(n) > 0:
+            return pingpong(n-1)*(-1) + 1
+        return pingpong(n-1) - 1
+    return -1
 
 def missing_digits(n):
     """Функция принимает число n, цифры которого стоят в порядке возрастания
@@ -164,11 +164,25 @@ def count_coins(total):
     True
     """
     "*** YOUR CODE HERE ***"
-
-
+    def cc(amount, DCoins):
+        if amount==0:
+            return 1
+        if amount<0 or DCoins==0:
+            return 0
+        else:
+            return cc(amount, DCoins-1)+cc(amount-Denomination(DCoins), DCoins)
+    def Denomination(DCoins):
+        if DCoins==1:
+            return 1
+        elif DCoins==2:
+            return 5
+        elif DCoins==3:
+            return 10
+        else:
+            return 25
+    return cc(total, 4)
 
 from operator import sub, mul
-
 def make_anonymous_factorial():
     """Возвращает выражение, которое вычисляет факториал.
 
@@ -179,4 +193,4 @@ def make_anonymous_factorial():
     >>> check(LAB_SOURCE_FILE, 'make_anonymous_factorial', ['Assign', 'AugAssign', 'FunctionDef', 'Recursion'])
     True
     """
-    return lambda x, y: x * y
+    return lambda x: lambda y: x * y
