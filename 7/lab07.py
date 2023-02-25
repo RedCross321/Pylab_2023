@@ -16,7 +16,9 @@ def skip_add(n):
     True
     """
     "*** YOUR CODE HERE ***"
-
+    if n > 0:
+        return n + skip_add(n-2)
+    return 0
 
 def summation(n, term):
 
@@ -35,10 +37,12 @@ def summation(n, term):
     ...       ['While', 'For'])
     True
     """
-    assert n >= 1
     "*** YOUR CODE HERE ***"
+    if n >= 1:
+        return term(n) + summation(n-1,term)
+    return 0
 
-
+import math
 def paths(m, n):
     """Возвращает число путей из нижнего левого угла сетки M x N с координатами (0, 0)
     в верхний правый (M-1, N-1), используя только сдвиги вправо или вверх.
@@ -65,6 +69,7 @@ def paths(m, n):
     1
     """
     "*** YOUR CODE HERE ***"
+    return math.factorial(m+n-2) // (math.factorial(m-1) * math.factorial(n-1))
 
 
 
@@ -114,7 +119,22 @@ def max_subseq(n, t):
     5
     """
     "*** YOUR CODE HERE ***"
-
+    if t == 0:
+        return 0
+    elif t >= len(str(n)):
+        return n
+    else:
+        b = 0
+        while t > 0:
+            a = 0
+            n1 = n  // 10 ** (t-1)
+            while n1 > 0:
+                if n1 %10 >= a:
+                    a = n1 % 10
+                n1 //= 10
+            t -= 1
+            b += a * 10 ** t
+        return b
 
 def add_chars(w1, w2):
     """
