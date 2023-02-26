@@ -38,10 +38,29 @@ sd.resolution = (600, 600)
 # Результат решения см results/exercise_01_shapes.jpg
 
 # TODO здесь ваш код
-x, y = 100, 100
-for i in range(0, 150, 50):
-    sd.vector(sd.Point(x, y), angle = i, length = 25)
-    x, y = sd.get_point(sd.vector(x, angle = i, length = 25))
+point1 = sd.Point(100, 100)
+for i in range(30, 390, 120):
+    v1 = sd.get_vector(point1, angle = i, length = 125, width=3)
+    v1.draw()
+    point1 = v1.end_point
+
+point2 = sd.Point(400, 100)
+for i in range(30, 390, 90):
+    v2 = sd.get_vector(point2, angle = i, length = 125, width=3)
+    v2.draw()
+    point2 = v2.end_point
+
+point3 = sd.Point(125, 375)
+for i in range(30, 390, 72):
+    v3 = sd.get_vector(point3, angle = i, length = 100, width=3)
+    v3.draw()
+    point3 = v3.end_point
+
+point4 = sd.Point(400, 375)
+for i in range(30, 390, 60):
+    v4 = sd.get_vector(point4, angle = i, length = 100, width=3)
+    v4.draw()
+    point4 = v4.end_point
 # Часть 1-бис.
 # Попробуйте прикинуть обьем работы, если нужно будет внести изменения в этот код.
 # Скажем, связывать точки не линиями, а дугами. Или двойными линиями. Или рисовать круги в угловых точках. Или...

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import simple_draw as sd
-
+sd.resolution = (1200, 600)
 
 # На основе кода из практической части реализовать снегопад:
 # - создать списки данных для отрисовки N снежинок
@@ -18,14 +18,34 @@ N = 20
 # sd.user_want_exit()
 
 
+def slovarik_snow():
+    return {'length': sd.random_number(10, 100),
+            'x': sd.random_number(100, 1100),
+            'y': 600 + sd.randint(100, 150)
+            }
+
+snowflakes = []
+for _ in range(N):
+    snowflakes.append(slovarik_snow())
+
+sd.start_drawing()
 while True:
-    sd.clear_screen()
-    # TODO здесь ваш код
+    for snowflake in snowflakes:
+        point = sd.get_point(snowflake['x'], snowflake['y'])
+        sd.snowflake(center=point, color=sd.background_color, length = snowflake['length'])
+        snowflake['x'] -= sd.randint(-10, 10)
+        snowflake['y'] -= sd.randint(10, 25)
+        point = sd.get_point(snowflake['x'], snowflake['y'])
+        sd.snowflake(center=point,color=sd.COLOR_WHITE, length = snowflake['length'])
+        if len(snowflakes) > 60:
+            snowflakes.remove(snowflake)
+        if snowflake['y'] < sd.random_number(15, 30):
+            snowflakes.remove(snowflake)
+    sd.finish_drawing()
     sd.sleep(0.1)
     if sd.user_want_exit():
         break
 sd.pause()
-
 # Примерный алгоритм отрисовки снежинок
 #   навсегда
 #     очистка экрана
@@ -53,7 +73,7 @@ sd.pause()
 
 # Усложненное задание (делать по желанию)
 # - сделать рандомные отклонения вправо/влево при каждом шаге
-# - сделать сугоб внизу экрана - если снежинка долетает до низа, оставлять её там,
+# - сделать сугроб внизу экрана - если снежинка долетает до низа, оставлять её там,
 #   и добавлять новую снежинку
 # Результат решения см https://youtu.be/XBx0JtxHiLg
 
