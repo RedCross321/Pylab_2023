@@ -2,9 +2,9 @@ import simple_draw as sd
 
 def draw_rain():
     def slovarik_snow():
-        return {'length': sd.random_number(10, 100),
-                'x': sd.random_number(100, 500),
-                'y': sd.randint(700, 950)
+        return {'length': sd.random_number(10, 50),
+                'x': sd.random_number(100, 350),
+                'y': sd.randint(350, 500)
                 }
 
     snowflakes = []
@@ -23,7 +23,7 @@ def draw_rain():
             sd.snowflake(center=point,color=sd.COLOR_WHITE, length = snowflake['length'])
             if len(snowflakes) > 60:
                 snowflakes.remove(snowflake)
-            if snowflake['y'] < sd.random_number(15, 30):
+            if snowflake['y'] < sd.random_number(220, 270):
                 snowflakes.remove(snowflake)
         i += 1
         if i % 2 ==0:

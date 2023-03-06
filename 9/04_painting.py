@@ -28,29 +28,37 @@
 
 
 import simple_draw as sd
-from drawing import rainbow as rb, house as H, tree, rain
+from drawing import rainbow as rb, house as H, tree, rain, sun, pchel
 
 
 sd.resolution = (1920, 1080)
 
 sd.ellipse(sd.Point(-180, -250), sd.Point(2100, 250), color=sd.COLOR_GREEN)
 
-rainbow_start = sd.Point(960, -150)
-rainbow_rad = 1200
+rainbow_start = sd.Point(760, -150)
+rainbow_rad = 1300
 rainbow_width = 15
 rb.draw_rainbow(rainbow_start, rainbow_rad, rainbow_width)
 
 house_height = 400
 house_width = 400
-house_start = 660
+house_start = 560
 house_lines_color = sd.COLOR_WHITE
 house_color = (136,69,53)
 H.draw_house(house_height+150, house_width, house_start, house_lines_color, house_color)
 
+sun_start = sd.Point(300, 900)
+sun_radius = 80
+sun.drawing_sun(sun_start, sun_radius)
+
+
+pchel_start = sd.Point(1200, 300)
+pchel_rad_head = 90
+pchel.drawing_pigchel(pchel_start, pchel_rad_head)
 
 tree_leaves_color = sd.COLOR_GREEN
 tree_color = (101, 67, 33)
-tree_start = sd.Point(1600, 150)
+tree_start = sd.Point(1400, 150)
 tree.draw_tree(tree_start, tree_leaves_color, tree_color)
 
 
