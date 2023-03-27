@@ -19,10 +19,14 @@ def rooms(i,root,canvas):
         but0.pack()
         spravochka.mainloop()
     def Schet():
+        x, y = schet.gigachad(float(entry1.get()), float(entry2.get()), float(entry3.get()), float(entry4.get()), float(entry5.get()), float(entry6.get()))
         root1.destroy()
         # canvas.delete(lab1K, lab2K, lab3K, lab4K, lab5K, lab6K, lab7K, but11K, but22K, entry1K, entry2K, entry3K, entry4K, entry5K, entry6K)
+        root = Tk()
         root.geometry('450x150+750+350')
-        x, y = schet.gigachad(float(entry1.get()), float(entry2.get()), float(entry3.get()), float(entry4.get()), float(entry5.get()), float(entry6.get()))
+
+        
+
         lab11 = Label(root,text=f'Площадь помещения: {x} м^2\n\nТепловая мощность для обогрева: {y} кВт',
         width=450,bg='white', fg='black', wraplength=450, font=("Bahnschrift", 14),justify=LEFT)
         # butt = Button(root,text="Конец(", width=20, command=vixod)
