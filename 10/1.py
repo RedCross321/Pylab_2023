@@ -1,18 +1,30 @@
-from tkinter import *
-from tkinter import ttk
- 
-root = Tk()
-root.title("METANIT.COM")
-root.geometry("300x250")
- 
-canvas = Canvas(bg="white", width=250, height=200)
-canvas.pack(anchor=CENTER, expand=1)
- 
- 
-def remove_button():
-    canvas.delete(btnId)
- 
-btn = ttk.Button(text="Click", command=remove_button)
-btnId = canvas.create_window(10, 20, anchor=NW, window=btn, width=100, height=50)
- 
+import tkinter
+
+
+def func():
+        label_visible_false.place(x=0, y=50)
+        button_visible_false.place(x=0, y=100)
+        label_visible_true.place_forget()
+        button_visible_true.place_forget()
+
+
+def visible_true():
+        label_visible_false.place_forget()
+        button_visible_false.place_forget()
+        label_visible_true.place(x=0, y=50)
+        button_visible_true.place(x=0, y=100)
+
+
+root = tkinter.Tk()
+root.geometry("400x400")
+label_visible_true = tkinter.Label(root, text='Не скрытый текст')
+label_visible_true.place(x=0, y=50)
+
+button_visible_true = tkinter.Button(root, text='Не скрытая кнопка', command=func)
+button_visible_true.place(x=0, y=100)
+
+label_visible_false = tkinter.Label(root, text='Скрытый текст')
+
+button_visible_false = tkinter.Button(root, text='Скрытая кнопка', command=visible_true)
+
 root.mainloop()
